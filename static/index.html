@@ -1,0 +1,18 @@
+<script>
+    fetchData = async() => {
+        let response = await fetch('/api/now');
+    
+        if (response.ok) {
+            const json = await response.json();
+            document.getElementById('now').innerText = JSON.stringify(json);
+        } else {
+            alert("HTTP-Error: " + response.status);
+        }
+    }
+    
+    window.onload = function() {
+        fetchData();
+    }
+</script>
+
+<p>現在の時刻は<span id='now'></span>です</p>
