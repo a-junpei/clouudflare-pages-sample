@@ -1,10 +1,9 @@
 <script>
     fetchData = async() => {
-        let response = await fetch('/api/now');
+        let response = await fetch('/now');
     
         if (response.ok) {
-            const json = await response.json();
-            document.getElementById('now').innerText = JSON.stringify(json);
+            document.getElementById('now').innerText = await response.text();
         } else {
             alert("HTTP-Error: " + response.status);
         }
